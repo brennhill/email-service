@@ -8,7 +8,7 @@
     "url": "https://github.com/clevertech/email-service/issues"
   },
   "homepage": "https://github.com/clevertech/email-service#readme",
-  "main": "src/index.js",
+  "main": "src/server.js",
   "scripts": {
     "start": "better-npm-run start",
     "start-dev": "nodemon",
@@ -16,18 +16,18 @@
     "lint": "standard"
   },
   "betterScripts": {
-    "start": "node src/index.js",
-    "start-dev": "nodemon src/index.js"
+    "start": "node src/server.js",
+    "start-dev": "nodemon src/server.js"
   },
   "bin": {
-    "pnp-email-service": "./src/index.js"
+    "pnp-email-service": "./src/server.js"
   },
   "dependencies": {
-    "aws-sdk": "^2.12.0",
+    "aws-sdk": "^2.348.0",
     "better-npm-run": "0.0.15",
-    "body-parser": "^1.17.1",
+    "body-parser": "^1.18.3",
     "ejs": "^2.5.6",
-    "express": "^4.13.3",
+    "express": "^4.16.4",
     "joi": "^10.2.2",
     "juice": "^4.0.2",
     "nodemailer": "^4.0.1",
@@ -40,9 +40,9 @@
     "winston": "*"
   },
   "devDependencies": {
-    "ava": "^0.18.1",
+    "ava": "^0.25.0",
     "node-fetch": "^1.6.3",
-    "nodemon": "^1.11.0",
+    "nodemon": "^1.18.5",
     "standard": "^8.6.0"
   }
 }

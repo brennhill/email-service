@@ -11,7 +11,7 @@ exports.service = function handleLambdaRequest(event, context, callback) {
     return callback(null, "Warmed up - it's cosy now")
   }
   // eslint-disable-next-line global-require
-  const service = require('./src/index')
+  const service = require('./src/app').createApp()
   // eslint-disable-next-line global-require
   const awsServerlessExpress = require('aws-serverless-express')
   const server = awsServerlessExpress.createServer(service)

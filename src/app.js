@@ -2,8 +2,6 @@
 
 const express = require('express')
 const bodyParser = require('body-parser')
-const winston = require('winston')
-
 const Joi = require('joi')
 
 const schema = Joi.object().keys({
@@ -13,7 +11,7 @@ const schema = Joi.object().keys({
   language: Joi.string()
 })
 
-exports.createRouter = (config = {}) => {
+exports.createEmailRouter = (config = {}) => {
   const env = require('./utils/env')(config)
   const service = require('./email')(env)
 
@@ -40,15 +38,13 @@ exports.createRouter = (config = {}) => {
   return router
 }
 
-exports.startServer = (config, callback) => {
-  const env = require('./utils/env')(config)
+exports.createApp = (config) => {
   const app = express()
-  const router = exports.createRouter(config)
-  const port = +env('MICROSERVICE_PORT') || 0
+  const emailRouter = exports.createEmailRouter(config)
 
-  app.use('/email', router)
+  app.use('/email', emailRouter)
 
-  app.get('/healthz', (req, res) => {
+  app.get('/healthcheck', (req, res) => {
     res.status(200).send({ 'status': 'OK' })
   })
 
@@ -58,6 +54,6 @@ exports.startServer = (config, callback) => {
     res.send(`User-agent: *\nDisallow:${pattern}\n`)
   })
 
-  return app.listen(port, callback)
+  return app
 }
 

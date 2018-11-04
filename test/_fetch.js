@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 const baseURL = `http://127.0.0.1:${process.env.MICROSERVICE_PORT}`
 
-require('../').startServer()
+require('../').createApp()
 
 module.exports = (path, options) => {
   const body = options && options.body
